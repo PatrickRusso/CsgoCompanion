@@ -7,11 +7,27 @@ class LeagueSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name',)
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
+    league = serializers.HyperlinkedRelatedField(
+        view_name='league_detail',
+        queryset=League.objects.all()
+    )
+    players = serializers.HyperlinkedRelatedField(
+        view_name='player_detail',
+        many=True,
+        read_only=True
+    )
+
     class Meta:
         model = Team
-        fields = ('league', 'name', 'region', 'record', 'logo',)
+        fields = ('name', 'region', 'record', 'logo', 'league', 'players')
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
+    team = serializers.HyperlinkedRelatedField(
+        view_name='team_detail',
+        queryset=Team.objects.all()
+    )
+
     class Meta:
         model = Player
-        fields = ('team', 'name', 'age', 'nationality', 'position', 'photo', 'adr', 'headshot_percentage',)
+        fields = ('name', 'age', 'nationality', 'position', 'photo', 'adr', 'headshot_percentage', 'team')
+
