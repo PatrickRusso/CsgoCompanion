@@ -1,6 +1,7 @@
 import './App.css';
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import './index.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import Nav from './components/Nav';
 
 
@@ -20,11 +21,29 @@ function App() {
     getLeagues()
   }, [])
 
+  useEffect (()=>{
+    const getTeams = async () => {
+      const res = await axios.get(`${BASE_URL}/teams`)
+      setTeams(res.data)
+    }
+    getTeams()
+  }, [])
+
+  useEffect(()=> {
+    const getPlayers = async () => {
+      const res = await axios.get(`${BASE_URL}/players`)
+      setPlayers(res.data)
+    }
+    setPlayers()
+  })
+
+
 
   return (
-    <div className="App">
-      <h1>Finally!</h1>
-      <Nav />
+    <div>
+    <h1 className="text-red-500">
+      Hello world!
+    </h1>
     </div>
   );
 }
