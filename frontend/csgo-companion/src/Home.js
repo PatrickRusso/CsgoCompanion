@@ -4,7 +4,7 @@ import Leagues from "./components/Leagues";
 import Nav from "./components/Nav";
 
 const Home = ({leagues}) => {
-  console.log(leagues);
+  // console.log(leagues);
   return (
     <div className="home-container">
       <h1>CSGO Manager</h1>

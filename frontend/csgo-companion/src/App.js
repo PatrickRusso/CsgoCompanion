@@ -5,7 +5,12 @@ import Home from "./Home";
 import Teams from "./components/TeamPage";
 import Players from "./components/Playerdetails";
 import Leagues from "./components/Leagues";
+import Teamdetails from "./components/Teamdetails";
+import Playerdetails from "./components/Playerdetails";
 import './App.css';
+
+
+
 function App() {
   const [leagues, setLeagues] = useState([]);
   const [teams, setTeams] = useState([]);
@@ -16,7 +21,7 @@ function App() {
   useEffect(()=>{
     const getLeagues = async () => {
       const res = await axios.get(`${BASE_URL}/leagues/`)
-      console.log(res.data)
+      // console.log(res.data)
       setLeagues(res.data)
     }
     getLeagues()
@@ -26,7 +31,7 @@ function App() {
   useEffect(() => {
     const getTeams = async () => {
       const res = await axios.get(`${BASE_URL}/teams/`);
-      console.log(res.data)
+      // console.log(res.data)
       setTeams(res.data);
     };
     getTeams();
@@ -39,7 +44,7 @@ function App() {
     };
     getPlayers();
   }, []);
-  console.log(teams)
+  // console.log(teams)
   return (
     <div className="App">
       <Routes>
@@ -47,6 +52,8 @@ function App() {
         <Route path="/teams/" element={<Teams leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/players/" element={<Players leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/leagues/" element={<Leagues leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/teams/:id" element={<Teamdetails leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/players/:id" element={<Playerdetails leagues={leagues} teams={teams} players={players} />}></Route>
       </Routes>
     </div>
   );
