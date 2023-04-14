@@ -1,26 +1,51 @@
 import React from "react";
 import Nav from "./Nav";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Teams(props) {
-  console.log()
-  const navigate = useNavigate();
-
-  const showTeam = (id) => {
-    navigate(`/teams/${id}`);
-  };
-
   return props.teams ? (
     <div>
       <Nav />
-      <h1>This is Teams</h1>
-      {props.teams.map((team) => (
-        <div>
-          {/* Render team information */}
-          <h1>{team.name}</h1>
-          <img src={team.logo} />
-        </div>
-      ))}
+      <h1 className="header">ESL Pro League</h1>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        {props.teams.map((team) => (
+          <Link to={`/teams/${team.id}`} key={team.id}>
+            <div
+              style={{
+                width: "300px",
+                height: "300px",
+                margin: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                background: `url(${team.logo}) no-repeat center center`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                color: "#fff",
+                position: "relative",
+                cursor: "pointer",
+              }}
+            >
+              <h2>{team.name}</h2>
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "10px",
+                  left: "10px",
+                }}
+              >
+                <h3>{team.record}</h3>
+                <p>{team.region}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   ) : (
     <h2>Loading . . .</h2>
@@ -28,6 +53,15 @@ function Teams(props) {
 }
 
 export default Teams;
+
+
+
+
+
+
+
+
+
 
 
 
