@@ -15,51 +15,57 @@ function Playerdetails(props) {
         }}
       >
         {props.players.map((player) => (
-          <div
+          <Link
             key={player.id}
-            style={{
-              width: "300px",
-              height: "400px",
-              margin: "10px",
-              padding: "10px",
-              borderRadius: "5px",
-              color: "#000",
-              position: "relative",
-              cursor: "pointer",
-              backgroundColor: "#fff",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              border: "1px solid #000",
-            }}
-            onClick={() => {
-              console.log("Player ID:", player.id);
-            }}
+            to={`/players/${player.id}`} 
+            style={{ textDecoration: "none" }}
           >
-            <img
-              src={player.photo}
-              alt={player.name}
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-                borderRadius: "5px",
-              }}
-            />
-            <h2 style={{ marginTop: "1rem" }}>{player.name}</h2>
-            <p>{player.team.name}</p> {/* Display team name */}
+            {/* Wrap player card with Link component */}
             <div
               style={{
-                position: "absolute",
-                bottom: "10px",
-                left: "10px",
+                width: "300px",
+                height: "400px",
+                margin: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                color: "#000",
+                position: "relative",
+                cursor: "pointer",
+                backgroundColor: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                border: "1px solid #000",
+              }}
+              onClick={() => {
+                console.log("Player ID:", player.id);
               }}
             >
-              {/* Display other player details as needed */}
+              <img
+                src={player.photo}
+                alt={player.name}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  borderRadius: "5px",
+                }}
+              />
+              <h2 style={{ marginTop: "1rem" }}>{player.name}</h2>
+              <p>{player.team.name}</p>
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "10px",
+                  left: "10px",
+                }}
+              >
+                {/* Display other player details as needed */}
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
