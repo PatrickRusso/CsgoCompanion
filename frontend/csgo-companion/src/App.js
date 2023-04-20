@@ -44,7 +44,7 @@ function App() {
     };
     getPlayers();
   }, []);
-  // console.log(teams)
+  
   return (
     <div className="App">
       <Routes>
@@ -52,8 +52,8 @@ function App() {
         <Route path="/teams/" element={<Teams leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/players/" element={<Players leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/leagues/" element={<Leagues leagues={leagues} teams={teams} players={players} />}></Route>
-        <Route path="/teams/:id" element={<Teamdetails leagues={leagues} teams={teams} players={players} />}></Route>
-        <Route path="/players/:id" element={<Playerdetails leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/teams/:name" element={<Teamdetails leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/players/:name" element={<Playerdetails leagues={leagues} teams={teams} players={players} />}></Route>
       </Routes>
     </div>
   );

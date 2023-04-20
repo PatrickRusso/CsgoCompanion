@@ -15,7 +15,7 @@ function Teams(props) {
         }}
       >
         {props.teams.map((team) => (
-          <Link to={`/teams/${team.id}`} key={team.id}>
+          <Link to={`/teams/${team.name}`} key={team.name}>
             <div
               style={{
                 width: "300px",
