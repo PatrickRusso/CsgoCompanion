@@ -7,14 +7,15 @@ import Players from "./components/Playerdetails";
 import Leagues from "./components/Leagues";
 import Teamdetails from "./components/Teamdetails";
 import Playerdetails from "./components/Playerdetails";
+import PlayerDetail from "./components/Playerdetail";
 import './App.css';
 
 
 
 function App() {
-  const [leagues, setLeagues] = useState([]);
-  const [teams, setTeams] = useState([]);
-  const [players, setPlayers] = useState([]);
+  const [leagues, setLeagues] = useState(null);
+  const [teams, setTeams] = useState(null);
+  const [players, setPlayers] = useState(null);
 
   const BASE_URL = "http://localhost:8000";
 
@@ -44,7 +45,7 @@ function App() {
     };
     getPlayers();
   }, []);
-  
+
   return (
     <div className="App">
       <Routes>
@@ -52,8 +53,8 @@ function App() {
         <Route path="/teams/" element={<Teams leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/players/" element={<Players leagues={leagues} teams={teams} players={players} />}></Route>
         <Route path="/leagues/" element={<Leagues leagues={leagues} teams={teams} players={players} />}></Route>
-        <Route path="/teams/:name" element={<Teamdetails leagues={leagues} teams={teams} players={players} />}></Route>
-        <Route path="/players/:name" element={<Playerdetails leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/teams/:id" element={<Teamdetails leagues={leagues} teams={teams} players={players} />}></Route>
+        <Route path="/players/:id" element={<Playerdetails leagues={leagues} teams={teams} players={players} />}></Route>
       </Routes>
     </div>
   );

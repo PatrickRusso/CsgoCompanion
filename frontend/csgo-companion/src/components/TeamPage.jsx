@@ -15,7 +15,7 @@ function Teams(props) {
         }}
       >
         {props.teams.map((team) => (
-          <Link to={`/teams/${team.name}`} key={team.name}>
+          <Link to={`/teams/${team.id}`} key={team.id}>
             <div
               style={{
                 width: "300px",
@@ -31,7 +31,7 @@ function Teams(props) {
                 cursor: "pointer",
               }}
             >
-              <h2>{team.name}</h2>
+              <h2 className = "text-3xl font-bold underline">{team.name}</h2>
               <div
                 style={{
                   position: "absolute",
